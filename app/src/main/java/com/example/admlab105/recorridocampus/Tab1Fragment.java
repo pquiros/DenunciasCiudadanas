@@ -167,32 +167,33 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
             public boolean onItemSingleTapUp(final int index, final OverlayItem item) {
                 //do something
                 //addMarker(new GeoPoint());
+                item.getPoint();
                 Marker mark = new Marker(map);
                 mark.setTitle(item.getTitle());
                 //String distancia = "Está a " + (int) user.distanceToAsDouble(item.getPoint()) + " mts. de distancia";
                 //mark.setSnippet(/*item.getSnippet()*/distancia);
                 GeoPoint geo = new GeoPoint(item.getPoint().getLatitude(), item.getPoint().getLongitude());
-                addMarker(geo);
-                //mark.setPosition(geo);
-                //mark.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+
+                mark.setPosition(geo);
+                mark.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
 
                 mark.showInfoWindow();
                 map.getOverlayManager().add(mark);
-                Toast.makeText(getActivity(), "Tap on1 ", Toast.LENGTH_SHORT).show();
-                //map.invalidate();
+                Toast.makeText(getActivity(), "onItemSingleTapUp", Toast.LENGTH_SHORT).show();
+                map.invalidate();
                 return true;
             }
 
             @Override
             public boolean onItemLongPress(final int index, final OverlayItem item) {
-                Toast.makeText(getActivity(), "Tap on2 ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "onItemLongPress", Toast.LENGTH_SHORT).show();
                 return true;
             }
         };
         ItemizedIconOverlay<OverlayItem> mOverlay = new ItemizedIconOverlay<OverlayItem>(getActivity(), marcadores, gestureListener);
 
 
-        mapEventsOverlay = new MapEventsOverlay(getContext(), this);
+        mapEventsOverlay = new MapEventsOverlay(this)/*MapEventsOverlay(getContext(), this)*/;
         map.getOverlays().add(0, mapEventsOverlay);
 
         map.getOverlays().add(mOverlay);
@@ -204,13 +205,13 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
 
     @Override
     public boolean singleTapConfirmedHelper(GeoPoint geo) {
-        //Toast.makeText(getActivity(), "Tap on ("+p.getLatitude()+","+p.getLongitude()+")", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "singleTapConfirmedHelper", Toast.LENGTH_SHORT).show();
         //geo = new GeoPoint(geo.getLatitude(), geo.getLongitude());
         //agregarMarcador(geo.getLatitude(), geo.getLongitude());
 
         //addMarker(new GeoPoint());
         Marker mark = new Marker(map);
-        //mark.setTitle(item.getTitle());
+        mark.setTitle("punto");
         //String distancia = "Está a " + (int) user.distanceToAsDouble(item.getPoint()) + " mts. de distancia";
         //mark.setSnippet(/*item.getSnippet()*/distancia);
         //GeoPoint geo = new GeoPoint(item.getPoint().getLatitude(), item.getPoint().getLongitude());
@@ -231,7 +232,7 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
     }
 
     @Override public boolean longPressHelper(GeoPoint p) {
-        Toast.makeText(getActivity(), "Tap on ("+p.getLatitude()+","+p.getLongitude()+")", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "longPressHelper", Toast.LENGTH_SHORT).show();
 
         return false;
     }
