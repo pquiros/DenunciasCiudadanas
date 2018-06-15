@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "627464244302",
+    "firebase_url": "https://coherent-broker-202205.firebaseio.com",
+    "project_id": "coherent-broker-202205",
+    "storage_bucket": "coherent-broker-202205.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627464244302:android:d0a300a1b00b9f8d",
+        "android_client_info": {
+          "package_name": "com.example.admlab105.recorridocampus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627464244302-h7sm2allhhgqr1kd8m870sekvsqcs540.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFB22jrgsnYwQ2iJcASmKtMLfGpDV3dOs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

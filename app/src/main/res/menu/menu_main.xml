@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.admlab105.recorridocampus.MainActivity">
+    <item
+        android:id="@+id/tuto"
+        android:orderInCategory="100"
+        android:title="Tutorial"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/intro"
+        android:orderInCategory="100"
+        android:title="Introducción"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/credits"
+        android:orderInCategory="100"
+        android:title="Créditos"
+        app:showAsAction="never" />
+</menu>

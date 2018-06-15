@@ -1,0 +1,3 @@
+<a href='https://ecci.ucr.ac.cr/'>Escuela de Ciencias de la Computación e Informatica</a>
+<a href='http://ori.ucr.ac.cr/sitio/'>Oficina de Registro e Informacion</a>
+<a href='http://museo.ucr.ac.cr/'>Museo +UCR</a>
