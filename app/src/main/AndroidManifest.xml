@@ -26,7 +26,7 @@
             android:label="Un Recorrido por el Campus"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".StartScreen"
             android:noHistory="true"
@@ -53,7 +53,8 @@
         <activity
             android:name=".Intro_activity"
             android:noHistory="true" />
-        <activity android:name=".MisDenuncias"></activity>
+        <activity android:name=".MisDenuncias" />
+        <activity android:name=".Menu"></activity>
     </application>
 
 </manifest>
