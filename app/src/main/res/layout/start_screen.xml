@@ -11,10 +11,13 @@
     tools:context=".StartScreen">
 
     <ImageView
-        android:src="@drawable/intro"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitXY" />
+        android:layout_height="480dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/policia_municipal_sj" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
