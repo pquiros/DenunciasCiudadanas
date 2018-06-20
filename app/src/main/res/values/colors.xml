@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="unselected">#C0CB00</color>
-    <color name="selected">#9AA400</color>
+    <color name="unselected">#c0cb00</color>
+    <color name="selected">#9aa400</color>
     <color name="colorPrimaryDark">#eaeaea</color>
     <color name="colorAccent">#000000</color>
     <color name="infoTabLayoutBackground">#FFFFFF</color>

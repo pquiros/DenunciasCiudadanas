@@ -1,85 +1,42 @@
 package com.example.admlab105.recorridocampus;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.preference.PreferenceManager;
-import android.service.carrier.CarrierMessagingService;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.maps.Projection;
-
 import org.osmdroid.api.IMapController;
-import org.osmdroid.bonuspack.routing.MapQuestRoadManager;
-import org.osmdroid.bonuspack.routing.OSRMRoadManager;
-import org.osmdroid.bonuspack.routing.Road;
-import org.osmdroid.bonuspack.routing.RoadManager;
-import org.osmdroid.bonuspack.routing.RoadNode;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.events.MapEventsReceiver;
-import org.osmdroid.events.MapListener;
-import org.osmdroid.events.ScrollEvent;
-import org.osmdroid.events.ZoomEvent;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlayControlView;
-import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
 import org.osmdroid.views.overlay.MapEventsOverlay;
-import org.osmdroid.views.overlay.Overlay;
 import org.osmdroid.views.overlay.OverlayItem;
-
 import java.util.ArrayList;
-
-import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
-import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedIconOverlay.OnItemGestureListener;
-import org.osmdroid.views.overlay.OverlayItem;
-import org.osmdroid.views.overlay.OverlayManager;
-import org.osmdroid.views.overlay.PathOverlay;
-import org.osmdroid.views.overlay.Polyline;
-import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
-
-import java.util.EventListener;
 import java.util.LinkedList;
-import java.util.List;
 
-
+import static android.app.Activity.RESULT_OK;
 
 
 public class Tab1Fragment extends Fragment implements MapEventsReceiver{
@@ -95,8 +52,13 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
     private LinkedList<Marker> sitios;
     private BaseSitiosHelper db;
     private int RADIO = 200;
+    private MisDenuncias misDenuncias;
+    private String TITULO = "";
+    private String DESCRIPCION = "";
 
     private static final int PERMISSIONS_REQUEST_LOCATION = 1;
+
+
 
     ArrayList<OverlayItem> marcadores;
     ArrayList<GeoPoint> marcadores2;
@@ -113,6 +75,7 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         almacenar();// Petición de permiso para external storage
+        //misDenuncias = new MisDenuncias();
 
        //db = BaseSitiosHelper.getInstance(this.getContext().getApplicationContext());
         View view = inflater.inflate(R.layout.tab1_fragment, container, false);
@@ -129,7 +92,7 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         map.setMultiTouchControls(true);
 
         IMapController mapController = map.getController();
-        mapController.setZoom(14);
+        mapController.setZoom(14.0);
         GeoPoint startPoint = new GeoPoint(9.9330, -84.0796);
         mapController.setCenter(startPoint);
 
@@ -141,14 +104,21 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         //Button btnCat = view.findViewById(R.id.btnCat);
 
         ImageButton btnCampus = view.findViewById(R.id.btnCampus);
+        ImageButton btnDenuncia = view.findViewById(R.id.btnDenuncia);
         //ImageButton btnUser = view.findViewById(R.id.btnUser);
         //ImageButton btnCerca = view.findViewById(R.id.btnCerca);
-        nombreSitioCercano = view.findViewById(R.id.nombreSitioText);
+        //nombreSitioCercano = view.findViewById(R.id.nombreSitioText);
 
         btnCampus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 volverCampus();
+            }
+        });
+        btnDenuncia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hacerDenuncia();
             }
         });
 
@@ -160,6 +130,11 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         sitios = new LinkedList<Marker>();
         //Cursor c = db.obtenerLugares();
 
+        agregarMarcador2(9.9329,  -84.0793, "Asalto", "a las 9 pm, dos sujetos");
+        agregarMarcador2(9.9329,  -84.0788, "Vandalismo", "en la estatua del Papa");
+        agregarMarcador2(9.9341,  -84.0797, "Ventas ambulantes", "a toda hora. Se entorpece el paso por la Ave. Central");
+        agregarMarcador2(9.9341,  -84.0799, "Ventas ilegales", "la Policía Municipal nunca aparece");
+        agregarMarcador2(9.9333,  -84.0781, "Consumo de drogas", "gente fumando y vendiendo marihuana");
 
 
         ItemizedIconOverlay.OnItemGestureListener<OverlayItem> gestureListener = new OnItemGestureListener<OverlayItem>() {
@@ -187,8 +162,12 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
             @Override
             public boolean onItemLongPress(final int index, final OverlayItem item) {
                 Toast.makeText(getActivity(), "onItemLongPress", Toast.LENGTH_SHORT).show();
+
+                iniciarActivity(item);
+
                 return true;
             }
+
         };
         ItemizedIconOverlay<OverlayItem> mOverlay = new ItemizedIconOverlay<OverlayItem>(getActivity(), marcadores, gestureListener);
 
@@ -204,23 +183,63 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //System.out.println("requestCode es :" + requestCode);
+        //Toast.makeText(getActivity(), "requestCode es :" + requestCode, Toast.LENGTH_SHORT).show();
+        if (requestCode == 0) {
+            //Toast.makeText(getActivity(), "resultCode es :" + resultCode, Toast.LENGTH_SHORT).show();
+            if (resultCode == RESULT_OK) {
+                TITULO = data.getStringExtra("Titulo crimen");
+                //Toast.makeText(getActivity(), "TITULO es :" + TITULO, Toast.LENGTH_SHORT).show();
+                DESCRIPCION = data.getStringExtra("Descripcion crimen");
+                //Toast.makeText(getActivity(), "DESCRIPCION es :" + DESCRIPCION, Toast.LENGTH_SHORT).show();
+            }
+            else if (resultCode == -1) {
+                //Toast.makeText(getActivity(), "TITULO es :" + TITULO, Toast.LENGTH_SHORT).show();
+
+                // something went wrong :-(
+            }
+        }
+    }
+
+    @Override
     public boolean singleTapConfirmedHelper(GeoPoint geo) {
-        Toast.makeText(getActivity(), "singleTapConfirmedHelper", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "singleTapConfirmedHelper", Toast.LENGTH_SHORT).show();
         //geo = new GeoPoint(geo.getLatitude(), geo.getLongitude());
         //agregarMarcador(geo.getLatitude(), geo.getLongitude());
 
-        //addMarker(new GeoPoint());
-        Marker mark = new Marker(map);
-        mark.setTitle("punto");
-        //String distancia = "Está a " + (int) user.distanceToAsDouble(item.getPoint()) + " mts. de distancia";
-        //mark.setSnippet(/*item.getSnippet()*/distancia);
-        //GeoPoint geo = new GeoPoint(item.getPoint().getLatitude(), item.getPoint().getLongitude());
-        //addMarker(geo);
-        mark.setPosition(geo);
-        mark.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        //new Handler();
 
-        mark.showInfoWindow();
-        map.getOverlayManager().add(mark);
+
+        //addMarker(new GeoPoint());
+        //Intent myIntent = new Intent(getContext(), MisDenuncias.class);
+        //startActivityForResult(new Intent(getContext(), MisDenuncias.class),0);
+
+        //startActivity(myIntent);
+
+        //Bundle extras;
+        //extras = myIntent.getExtras();
+        if (TITULO != "") {
+            Marker mark = new Marker(map);
+            //if (extras != null) {
+            mark.setTitle(/*extras.getString("Titulo crimen")*/TITULO);
+            mark.setSnippet(/*extras.getString("Descripcion crimen")*/DESCRIPCION);
+            //}
+            //String distancia = "Está a " + (int) user.distanceToAsDouble(item.getPoint()) + " mts. de distancia";
+            //mark.setSnippet(/*item.getSnippet()*/distancia);
+            //GeoPoint geo = new GeoPoint(item.getPoint().getLatitude(), item.getPoint().getLongitude());
+            //addMarker(geo);
+            mark.setPosition(geo);
+            mark.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+
+            mark.showInfoWindow();
+            map.getOverlayManager().add(mark);
+            TITULO = "";
+            DESCRIPCION = "";
+        } else {
+            Toast.makeText(getActivity(), "Ingrese una denuncia antes de colocarla en el mapa", Toast.LENGTH_SHORT).show();
+        }
         //map.invalidate();
 
 
@@ -231,8 +250,12 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         return true;
     }
 
-    @Override public boolean longPressHelper(GeoPoint p) {
-        Toast.makeText(getActivity(), "longPressHelper", Toast.LENGTH_SHORT).show();
+
+
+    @Override
+    public boolean longPressHelper(GeoPoint p) {
+        //Toast.makeText(getActivity(), "longPressHelper", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "lat: " + p.getLatitude() + " long: " + p.getLongitude() , Toast.LENGTH_SHORT).show();
 
         return false;
     }
@@ -270,9 +293,13 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
 
     private void volverCampus(){
         IMapController mapController = map.getController();
-        mapController.setZoom(30);
+        mapController.setZoom(14.0);
         GeoPoint startPoint = new GeoPoint(9.9327,-84.0796);
         mapController.setCenter(startPoint);
+    }
+
+    private void hacerDenuncia() {
+        startActivityForResult(new Intent(getContext(), MisDenuncias.class),0);
     }
 
     private void almacenar() {
@@ -437,6 +464,23 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
 
     }
 
+    private void agregarMarcador2(double la, double lo, String titulo, String detalles) {
+        lat=la;
+        lon=lo;
+        //CameraUpdate miUbic = CameraUpdateFactory.newLatLngZoom(coord, 16f);
+        /*if (marker != null) {
+            marker.remove(map);
+        }*/
+        org.osmdroid.views.overlay.Marker marcador = new org.osmdroid.views.overlay.Marker(map);
+        GeoPoint geo = new GeoPoint(lat, lon);
+        marcador.setTitle(titulo);
+        marcador.setSnippet(detalles);
+        marcador.setPosition(geo);
+        //marker.setIcon(getResources().getDrawable(R.drawable.ubicacion));
+        map.getOverlays().add(marcador);
+
+    }
+
 
     @Override
     public void onResume(){
@@ -469,15 +513,9 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
 
     }
 
-    /*@Override
-    public boolean onSingleTapConfirmed(MotionEvent me) {
-        org.osmdroid.views.Projection p = map.getProjection();
-        GeoPoint gp = (GeoPoint) p.fromPixels((int) me.getX(), (int) me.getY());
-        addMarker(gp);
-        Toast.makeText(getActivity(),"PRUEBA1",
-                Toast.LENGTH_LONG).show();
-        return false;
-    }*/
+
+
+
 
 }
 
