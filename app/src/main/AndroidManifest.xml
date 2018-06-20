@@ -53,7 +53,7 @@
         <activity
             android:name=".Intro_activity"
             android:noHistory="true" />
-        <activity android:name=".MenuPreferencias"></activity>
+        <activity android:name=".MisDenuncias"></activity>
     </application>
 
 </manifest>
