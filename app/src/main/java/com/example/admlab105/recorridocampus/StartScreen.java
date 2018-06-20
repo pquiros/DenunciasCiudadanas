@@ -24,17 +24,17 @@ public class StartScreen extends Activity {
                 SharedPreferences settings=getSharedPreferences("prefs", 0);
                 final boolean firstRun=settings.getBoolean("firstRun",false);
 
-                if (settings.getBoolean("isFirstRun", true)) {
+                /*if (settings.getBoolean("isFirstRun", true)) {
                     SharedPreferences.Editor editor = settings.edit();
                     editor.putBoolean("isFirstRun", false);
                     editor.commit();
                     Intent next = new Intent(StartScreen.this, Intro_activity.class);
                     startActivity(next);
-                } else {
-                    Intent next2 = new Intent(StartScreen.this, MainActivity.class);
+                } else {*/
+                    Intent next2 = new Intent(StartScreen.this, /*MainActivity*/Menu.class);
                     startActivity(next2);
                     finish();
-                }
+                //}
 
 
 
