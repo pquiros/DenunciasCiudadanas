@@ -11,7 +11,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -24,10 +23,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Denuncias Ciudadanas"
+            android:label="Un Recorrido por el Campus"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".StartScreen"
             android:noHistory="true"
@@ -54,8 +53,7 @@
         <activity
             android:name=".Intro_activity"
             android:noHistory="true" />
-        <activity android:name=".MenuPreferencias" />
-        <activity android:name=".MisDenuncias"></activity>
+        <activity android:name=".MenuPreferencias"></activity>
     </application>
 
 </manifest>
