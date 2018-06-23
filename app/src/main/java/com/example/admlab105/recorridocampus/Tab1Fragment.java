@@ -151,7 +151,7 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         agregarMarcador2(9.931610, -84.074013,"Violencia","dos personas se bajaron del carro y se empezaron a golpear");
         agregarMarcador2(9.931415, -84.071529,"Quiebra vidrios","unos tipos estan quebrando vidrios de carros estacionados");
         agregarMarcador2(9.933256, -84.079395,"Indigentes","hay varios indigentes acostados en la acera");
-        agregarMarcador2(9.941463, -84.088360,"Borrachos","una persona borracha está gritando en la cablle");
+        agregarMarcador2(9.941463, -84.088360,"Borrachos","una persona borracha está gritando en la calle");
         agregarMarcador2(9.929162, -84.066967,"Robo","entraron personas al restaurante y vaciaron la caja");
         agregarMarcador2(9.931836, -84.066023,"Asalto","le quitaron el celular a todos en la parada");
         agregarMarcador2(9.927323, -84.079541,"Actos inmorales","una mujer se quitó la ropa en la calle");
