@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecorridoCampus</string>
+    <string name="app_name">Denuncias Ciudadanas</string>
     <string name="title_activity_mapa">Map</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="tab_text_1">Tab 1</string>

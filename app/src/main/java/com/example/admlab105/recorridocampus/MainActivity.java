@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Tab1Fragment(), "Mapa");
+        adapter.addFragment(new Tab1Fragment(), "Presione el botón con la lupa para hacer una denuncia");
         //adapter.addFragment(new Tab2Fragment(), "Mi recorrido");
         viewPager.setAdapter(adapter);
     }

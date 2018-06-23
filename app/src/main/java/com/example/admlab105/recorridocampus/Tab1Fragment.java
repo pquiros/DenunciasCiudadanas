@@ -135,6 +135,26 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         agregarMarcador2(9.9341,  -84.0797, "Ventas ambulantes", "a toda hora. Se entorpece el paso por la Ave. Central");
         agregarMarcador2(9.9341,  -84.0799, "Ventas ilegales", "la Policía Municipal nunca aparece");
         agregarMarcador2(9.9333,  -84.0781, "Consumo de drogas", "gente fumando y vendiendo marihuana");
+        agregarMarcador2(9.935679, -84.108792,"Asalto","dos personas me atacaron y me quitaron mis cosas");
+        agregarMarcador2(9.930363, -84.091593,"Vandalismo","habían personas sospechosas en el cementerio");
+        agregarMarcador2(9.931610, -84.076476,"Vendedores ambulantes","hay gente vendiendo cosas en la calle");
+        agregarMarcador2(9.933148, -84.084721,"Actos inmorales","a las 11 de la noche habían dos jóvenes haciendo cosas inmorales");
+        agregarMarcador2(9.936255, -84.074094,"Obscenidades","hay transvestis en la calle");
+        agregarMarcador2(9.936276, -84.080703,"Robo","dos maleantes robaron la ótica");
+        agregarMarcador2(9.935684, -84.077087,"Asalto","asaltaron a unas muchachas en la parada de buses");
+        agregarMarcador2(9.940757, -84.080483,"Venta de drogas","habían unos tipos vendiendo drogas en la calle");
+        agregarMarcador2(9.949824, -84.078863,"Disparos","se escucharon disparos cerca de la zona");
+        agregarMarcador2(9.933972, -84.078895,"Vendedores ambulantes","vendedores ambulantes obstaculizando la avenida");
+        agregarMarcador2(9.933459, -84.080732,"Carterista","un sujeto le arrebató la cartera a una señora");
+        agregarMarcador2(9.932149, -84.077036,"Vandalismo","dos muchachos estaban pintando las paredes de la iglesia");
+        agregarMarcador2(9.933747, -84.076261,"Comida ambulante","mujeres vendiendo comida en la calle");
+        agregarMarcador2(9.931610, -84.074013,"Violencia","dos personas se bajaron del carro y se empezaron a golpear");
+        agregarMarcador2(9.931415, -84.071529,"Quiebra vidrios","unos tipos estan quebrando vidrios de carros estacionados");
+        agregarMarcador2(9.933256, -84.079395,"Indigentes","hay varios indigentes acostados en la acera");
+        agregarMarcador2(9.941463, -84.088360,"Borrachos","una persona borracha está gritando en la cablle");
+        agregarMarcador2(9.929162, -84.066967,"Robo","entraron personas al restaurante y vaciaron la caja");
+        agregarMarcador2(9.931836, -84.066023,"Asalto","le quitaron el celular a todos en la parada");
+        agregarMarcador2(9.927323, -84.079541,"Actos inmorales","una mujer se quitó la ropa en la calle");
 
 
         ItemizedIconOverlay.OnItemGestureListener<OverlayItem> gestureListener = new OnItemGestureListener<OverlayItem>() {

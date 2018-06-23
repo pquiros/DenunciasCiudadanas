@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="235dp"
-        android:layout_height="292dp"
+        android:layout_width="247dp"
+        android:layout_height="299dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -18,7 +18,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -26,8 +26,8 @@
 
     <Button
         android:id="@+id/btnDenuncia"
-        android:layout_width="209dp"
-        android:layout_height="46dp"
+        android:layout_width="244dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -36,7 +36,7 @@
         android:layout_marginTop="8dp"
         android:adjustViewBounds="false"
         android:background="#00ffffff"
-        android:text="Hacer denuncia"
+        android:text="Hacer una  denuncia"
         android:textAllCaps="false"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="26sp"
@@ -44,7 +44,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.378" />
@@ -61,14 +61,14 @@
         android:layout_marginTop="8dp"
         android:text="Opciones"
         android:textColor="@android:color/holo_green_dark"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.534" />
 
     <TextView
         android:id="@+id/txtTitulo2"
@@ -82,14 +82,14 @@
         android:layout_marginTop="8dp"
         android:text="Mis denuncias"
         android:textColor="@android:color/holo_green_dark"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <TextView
         android:id="@+id/txtTitulo"

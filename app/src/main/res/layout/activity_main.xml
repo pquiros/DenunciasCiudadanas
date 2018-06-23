@@ -20,23 +20,23 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
-            android:background="@color/selected"
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            android:background="@android:color/holo_blue_dark"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            app:tabTextColor="@color/colorAccent"
-            app:tabSelectedTextColor="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            app:tabIndicatorColor="@color/unselected"
-            app:tabMaxWidth="0dp"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            android:layout_gravity="center_horizontal"
-            app:tabBackground="@drawable/tab_color_selector"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            android:layout_marginLeft="50dp" />
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="50dp"
+                app:tabBackground="@drawable/tab_color_selector"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@android:color/holo_blue_dark"
+                app:tabMaxWidth="0dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="#0063cc"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                app:tabTextColor="@color/colorAccent" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
