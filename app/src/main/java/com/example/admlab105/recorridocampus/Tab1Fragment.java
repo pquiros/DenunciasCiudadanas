@@ -230,6 +230,7 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
             //mark.setSnippet(/*item.getSnippet()*/distancia);
             //GeoPoint geo = new GeoPoint(item.getPoint().getLatitude(), item.getPoint().getLongitude());
             //addMarker(geo);
+            mark.setIcon(getResources().getDrawable(R.drawable.icono2));
             mark.setPosition(geo);
             mark.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
 
@@ -473,6 +474,7 @@ public class Tab1Fragment extends Fragment implements MapEventsReceiver{
         }*/
         org.osmdroid.views.overlay.Marker marcador = new org.osmdroid.views.overlay.Marker(map);
         GeoPoint geo = new GeoPoint(lat, lon);
+        marcador.setIcon(getResources().getDrawable(R.drawable.icono2));
         marcador.setTitle(titulo);
         marcador.setSnippet(detalles);
         marcador.setPosition(geo);
