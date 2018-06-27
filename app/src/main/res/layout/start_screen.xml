@@ -16,7 +16,9 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:scaleType="fitXY"
-        android:src="@drawable/policia_municipal_sj" />
+        android:src="@drawable/policia_municipal_sj"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
